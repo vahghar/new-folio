@@ -1,5 +1,6 @@
 import { Icons } from "@/components/icons";
 import { HomeIcon, NotebookIcon } from "lucide-react";
+{/*https://cdn.llm.report/openai-demo.mp4 */}
 
 export const DATA = {
   name: "Raghav Ghulyani",
@@ -95,8 +96,9 @@ export const DATA = {
         "MongoDB",
         "Node.js",
         "TailwindCSS",
-        "Shadcn UI",
         "Magic UI",
+        "Socket.io",
+        "E2EE"
       ],
       links: [
         {
@@ -132,8 +134,8 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "",
-      video: "https://cdn.llm.report/openai-demo.mp4",
+      image: "/content_sphere.png",
+      video: "",
     },
     {
       title: "Auth Boilerplate",
