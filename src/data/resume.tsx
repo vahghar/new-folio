@@ -167,6 +167,39 @@ export const DATA = {
       video:
         "",
     },
+    {
+      title: "CommitSense",
+      href: "https://github.com/vahghar/project-one-start",
+      dates: "January 2025",
+      active: true,
+      description:
+        "A platform where you can summarize commits and ask questions about them. Get important flashcards for meetings",
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "tRPC",
+        "NeonDB",
+        "Postgres",
+        "Assembly AI",
+        "Gemini AI",
+        "Groq AI",
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/vahghar/realtime-chat-app",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Website",
+          href: "https://git-helper-seven.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        }
+      ],
+      image: "/git_proj.png",
+      video:
+        "",
+    },
   ],
   hackathons: [
     {
