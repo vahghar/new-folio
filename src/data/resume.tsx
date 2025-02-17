@@ -54,8 +54,8 @@ export const DATA = {
 
   work: [
     {
-      company: "BridgeIn",
-      href: "https://bridgein.co/",
+      company: "Nocage.in",
+      href: "https://nocage.in/",
       badges: [],
       location: "Remote",
       title: "Full Stack Developer",
