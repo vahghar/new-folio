@@ -154,7 +154,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://website-boilerplate-with-auth.vercel.app/",
+          href: "https://website-boilerplate-with-auth-git-master-vahghars-projects.vercel.app/",
           icon: <Icons.globe className="size-3" />,
         },
         {
