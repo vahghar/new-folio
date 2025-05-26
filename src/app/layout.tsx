@@ -63,7 +63,6 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="light">
           <VedWrapper/>
-        {children}
           <TooltipProvider delayDuration={0}>
             {children}
             <FloatingDockDemo />
