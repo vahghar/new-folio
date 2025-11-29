@@ -8,7 +8,7 @@ export const DATA = {
   description:
     "Software Engineer. Turning coffee into code since 2023.",
   summary:
-    "I am pursuing my Bachelors in Software Engineering from Delhi Technological University. I have been working as a Software Engineer for over a year now. I have worked with various technologies like React, Next.js, Typescript, Node.js, Postgres, Docker, C++, and many more. I also have some industry experience that I got working as a backend developer at a startup based in Delhi.",
+    "I am pursuing my Bachelors in Software Engineering from Delhi Technological University. I have been working as a Software Engineer for over a year now. I have worked with various technologies like React, Next.js, Typescript, Node.js, Postgres, Docker, C++, and many more. Have also worked at two startups about which I explain below.",
   avatarUrl: "/me2.jpeg",
   skills: [
     "React",
@@ -65,6 +65,18 @@ export const DATA = {
       description:
         "Architected and deployed 15+ REST API endpoints with Node.js, TypeScript, and Prisma, managing 10K+ daily requests. Created API documentation with Swagger, reducing onboarding time by 25%. Integrated backend services with MongoDB for seamless data storage and enhanced front-end interfaces using React and TypeScript for two platforms.",
     },
+    {
+      company: "3poch Labs",
+      href: "https://www.neuravaults.xyz/",
+      badges: [],
+      location: "Remote",
+      title: "Backend Developer",
+      logoUrl: "/suitcase.png",
+      start: "August 2025",
+      end: "October 2025",
+      description:
+        "Extracted and processed on-chain data from Solidity smart contracts across 3 DeFi lending protocols on HyperEVM chains to calculate real-time APY metrics for yield optimization. Built a Python FastAPI backend hosting a 24/7 Telegram bot service for continuous platform monitoring. Designed automated alert system to push real-time notifications for yield opportunities and rebalancing events directly to users via Telegram",
+    },
   ],
   education: [
     {
@@ -107,11 +119,11 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/convo.png",
+      image: "",
       video:
-        "",
+        "/chat_easy.mp4",
     },
-    {
+    /*{
       title: "Content Sphere",
       href: "https://github.com/vahghar/ContentSphere",
       dates: "October 2024",
@@ -136,6 +148,31 @@ export const DATA = {
       ],
       image: "/content_sphere.png",
       video: "",
+    },*/
+    {
+      title: "BrowserSQL",
+      href: "https://sql-on-browser-zeta.vercel.app/",
+      dates: "November 2025",
+      active: true,
+      description:
+        "A client-side SQL query tool for instant, in-browser data analysis of CSV and Excel files.",
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "TailwindCSS",
+        "Papaparse",
+        "Alasql"
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://sql-on-browser-zeta.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "",
+      video:
+        "/browser_sql.mp4",
     },
     {
       title: "Auth Boilerplate",
