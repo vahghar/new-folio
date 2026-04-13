@@ -96,6 +96,64 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "BrowserSQL",
+      href: "https://sql-on-browser-zeta.vercel.app/",
+      dates: "November 2025",
+      active: true,
+      description:
+        "A client-side SQL query tool for instant, in-browser data analysis of CSV and Excel files.",
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "TailwindCSS",
+        "Papaparse",
+        "Alasql"
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://sql-on-browser-zeta.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "",
+      video:
+        "/browser_sql.mp4",
+    },
+    {
+      title: "CommitSense",
+      href: "https://github.com/vahghar/project-one-start",
+      dates: "January 2025",
+      active: true,
+      description:
+        "A platform where you can summarize commits and ask questions about them. Get important flashcards for meetings",
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "tRPC",
+        "NeonDB",
+        "Postgres",
+        "Assembly AI",
+        "Gemini AI",
+        "Groq AI",
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/vahghar/realtime-chat-app",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Website",
+          href: "https://git-helper-seven.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        }
+      ],
+      image: "/git_proj.png",
+      video:
+        "",
+    },
+    {
       title: "Chat Easy",
       href: "https://github.com/vahghar/realtime-chat-app",
       dates: "December 2024",
@@ -150,31 +208,6 @@ export const DATA = {
       video: "",
     },*/
     {
-      title: "BrowserSQL",
-      href: "https://sql-on-browser-zeta.vercel.app/",
-      dates: "November 2025",
-      active: true,
-      description:
-        "A client-side SQL query tool for instant, in-browser data analysis of CSV and Excel files.",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "TailwindCSS",
-        "Papaparse",
-        "Alasql"
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://sql-on-browser-zeta.vercel.app/",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "",
-      video:
-        "/browser_sql.mp4",
-    },
-    {
       title: "Auth Boilerplate",
       href: "https://website-boilerplate-with-auth.vercel.app/",
       dates: "November 2024",
@@ -204,41 +237,9 @@ export const DATA = {
       video:
         "",
     },
-    {
-      title: "CommitSense",
-      href: "https://github.com/vahghar/project-one-start",
-      dates: "January 2025",
-      active: true,
-      description:
-        "A platform where you can summarize commits and ask questions about them. Get important flashcards for meetings",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "tRPC",
-        "NeonDB",
-        "Postgres",
-        "Assembly AI",
-        "Gemini AI",
-        "Groq AI",
-      ],
-      links: [
-        {
-          type: "Source",
-          href: "https://github.com/vahghar/realtime-chat-app",
-          icon: <Icons.github className="size-3" />,
-        },
-        {
-          type: "Website",
-          href: "https://git-helper-seven.vercel.app/",
-          icon: <Icons.globe className="size-3" />,
-        }
-      ],
-      image: "/git_proj.png",
-      video:
-        "",
-    },
   ],
   hackathons: [
+
     {
       title: "Hack Western 5",
       dates: "November 23rd - 25th, 2018",

@@ -1,4 +1,4 @@
-import { IconCloudDemo } from "@/components/IconCloud";
+import { SkillsMarquee } from "@/components/skills-marquee";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/project-card";
@@ -18,7 +18,11 @@ const BLUR_FADE_DELAY = 0.04;
 export default function Page() {
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10">
-      <section id="hero">
+      <section id="hero" className="relative">
+        {/* Aurora background orbs */}
+        <div className="aurora-orb aurora-orb-1" />
+        <div className="aurora-orb aurora-orb-2" />
+        <div className="aurora-orb aurora-orb-3" />
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="gap-2 flex justify-between">
             <div className="flex-col flex flex-1 space-y-1.5">
@@ -31,7 +35,7 @@ export default function Page() {
               <TextGenerateEffect words="Software Engineer. Turning coffee into code since 2023."/>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
-              <Avatar className="size-28 border">
+              <Avatar className="size-28 border ring-2 ring-indigo-400/30 ring-offset-2 ring-offset-background">
                 <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
               </Avatar>
@@ -41,7 +45,7 @@ export default function Page() {
       </section>
       <section id="about">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <SparklesText text="About"/>
+          <h2 className="text-xl font-bold">About</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
           <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
@@ -101,14 +105,9 @@ export default function Page() {
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
             <h2 className="text-xl font-bold">Skills</h2>
           </BlurFade>
-          <div className="flex flex-wrap gap-1">
-            {/*{DATA.skills.map((skill, id) => (
-              <BlurFade key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                <Badge key={skill}>{skill}</Badge>
-              </BlurFade>
-            ))}*/}
-            <IconCloudDemo/>
-          </div>
+          <BlurFade delay={BLUR_FADE_DELAY * 10}>
+            <SkillsMarquee />
+          </BlurFade>
         </div>
       </section>
       <section id="projects">
@@ -130,7 +129,7 @@ export default function Page() {
               </div>
             </div>
           </BlurFade>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto">
+          <div className="bento-grid">
             {DATA.projects.map((project, id) => (
               <BlurFade
                 key={project.title}
@@ -147,7 +146,6 @@ export default function Page() {
                   video={project.video}
                   links={project.links}
                 />
-                {/*<GlowingEffectDemoSecond/>*/}
               </BlurFade>
             ))}
           </div>
