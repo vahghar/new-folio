@@ -3,7 +3,7 @@ import { getBlogPosts } from "@/data/blog";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Blog",
+  title: "Blogs",
   description: "My thoughts on software development, life, and more.",
 };
 
@@ -13,9 +13,9 @@ export default async function BlogPage() {
   const posts = await getBlogPosts();
 
   return (
-    <section>
+    <section className="mx-auto w-full max-w-2xl py-12 px-6">
       <BlurFade delay={BLUR_FADE_DELAY}>
-        <h1 className="font-medium text-2xl mb-8 tracking-tighter">blog</h1>
+        <h1 className="font-medium text-2xl mb-8 tracking-tighter">My Blogs</h1>
       </BlurFade>
       {posts
         .sort((a, b) => {

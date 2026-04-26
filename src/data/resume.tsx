@@ -20,11 +20,15 @@ export const DATA = {
     "MongoDB",
     "Prisma",
     "Docker",
+    "Terraform",
+    "Azure",
+    "Linux",
     "Git",
     "C++",
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
+    { href: "/blog", icon: NotebookIcon, label: "Blog" },
   ],
   contact: {
     email: "raghav77g@gmail.com",

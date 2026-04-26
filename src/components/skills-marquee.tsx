@@ -15,7 +15,6 @@ const row1: Skill[] = [
   { name: "JavaScript", slug: "javascript", color: "#F7DF1E" },
   { name: "TailwindCSS", slug: "tailwindcss", color: "#06B6D4" },
   { name: "HTML5", slug: "html5", color: "#E34F26" },
-  { name: "CSS3", slug: "css3", color: "#1572B6" },
   { name: "Framer Motion", slug: "framer", color: "#0055FF" },
 ];
 
@@ -26,9 +25,11 @@ const row2: Skill[] = [
   { name: "MongoDB", slug: "mongodb", color: "#47A248" },
   { name: "Prisma", slug: "prisma", color: "#2D3748" },
   { name: "Docker", slug: "docker", color: "#2496ED" },
+  { name: "Terraform", slug: "terraform", color: "#7B42BC" },
+  { name: "Azure", slug: "microsoftazure", color: "#0078D4" },
+  { name: "Linux", slug: "linux", color: "#FCC624" },
   { name: "Git", slug: "git", color: "#F05032" },
   { name: "GitHub", slug: "github", color: "#ffffff" },
-  { name: "Vercel", slug: "vercel", color: "#ffffff" },
 ];
 
 function SkillBadge({ skill }: { skill: Skill }) {

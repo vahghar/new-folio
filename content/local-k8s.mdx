@@ -1,0 +1,53 @@
+---
+title: "Setting up Kubernetes locally - what I learned and how it compares to Azure"
+publishedAt: "2026-04-26"
+summary: "A deep dive into my experience running Kubernetes locally with minikube, terraform, and helm, and how it translates to production Azure environments."
+---
+
+There's a point in every developer's journey where someone in a meeting casually drops "oh yeah we use kubernetes in prod" and I nodded along while quietly making a mental note to actually figure out what that means. I finally stopped nodding and started building. This is what that looked like.
+
+The goal was simple - understand kubernetes properly, not through documentation or videos, but by actually running things, breaking them, and fixing them. And I wanted to do it without spending anything.
+
+---
+
+## Why local and not Azure
+
+Azure Kubernetes Service is genuinely impressive. It provides a managed control plane, automatic upgrades, and multi availability zone redundancy. It also costs money every hour it exists whether my app is doing anything or not. For me, as someone learning the fundamentals, that wasn't a tradeoff worth making.
+
+Minikube runs a single node kubernetes cluster on my laptop. It's not the same as a production cluster in any serious infrastructure sense - everything runs on one node, there's no high availability, and if my laptop dies the cluster dies with it. But here's what I found that nobody really emphasizes enough: every core kubernetes concept works perfectly on it. Pods, deployments, services, ingress, autoscaling, persistent storage, config, secrets - all of it behaved the same way for me. The learning gap between minikube and aks was much smaller than it looked from the outside.
+
+On Azure, clusters span multiple nodes across availability zones automatically. Node failures are handled gracefully, the control plane is managed by microsoft, and I never have to think about etcd. On minikube, I was the control plane, the worker node, and the person who forgets to run minikube start before running terraform apply. Both were valid learning experiences for me.
+
+---
+
+## Terraform and Helm - doing it the right way from the start
+
+The straightforward way to deploy something to kubernetes is running kubectl apply with a yaml file. It works. It's also how I could have ended up three months later with no idea what was actually running in my cluster or how it got there.
+
+I decided to manage kubernetes resources through infrastructure as code. That meant terraform handling the cluster-level resources like namespaces, and helm managing the application-level resources inside those namespaces. For me, the two worked together - terraform used the helm provider to deploy helm releases, which meant a single terraform apply created my namespace and deployed my entire application into it in the right order.
+
+On Azure, this same pattern runs in production. Terraform talks to an aks cluster instead of minikube, the state file lives in azure blob storage instead of on my local machine, and instead of typing terraform apply in a terminal myself, a pipeline in azure devops does it automatically on every merge. The actual terraform code I wrote changed very little between local and cloud. That's what made learning it locally genuinely useful for me.
+
+---
+
+## The Helm Chart
+
+A helm chart is a collection of kubernetes resource templates where all the variable parts - image names, replica counts, resource limits, environment config - lived in a single values.yaml file and were referenced throughout. I could change a value in one place and it would propagate everywhere. I could deploy to a different environment just by passing a different values file. It's a simple idea that made managing my kubernetes applications at scale actually tractable.
+
+ My chart for this project had a deployment, service, ingress, configmap, secret, serviceaccount, persistent volume claim, and horizontal pod autoscaler. That was essentially every major kubernetes resource type in one place, which made it a good learning exercise even with a simple nginx image running inside it.
+
+I configured the deployment with liveness and readiness probes from the start. The liveness probe tells kubernetes whether my pod is still alive - if it fails, the pod gets restarted. The readiness probe tells kubernetes whether my pod is ready to receive traffic - if it fails, the pod gets removed from the service rotation until it recovers. In a rolling deployment, this meant my new pods only started receiving traffic once they were actually ready, which is how I got zero downtime deployments without doing anything complicated.
+
+The ingress resource routed external traffic from a hostname - loreal.local pointed at the minikube ip via my hosts file - through the nginx ingress controller to the service and then to the pods. On Azure, this ingress controller would be replaced by the azure application gateway ingress controller. My domain would live in azure dns instead of a hosts file, ssl termination would be handled by a managed certificate automatically, and a real public ip would get assigned without me having to run minikube tunnel in a separate terminal. The ingress yaml I wrote is almost identical. The infrastructure underneath it is completely different.
+
+I used the horizontal pod autoscaler to watch cpu utilization across all my pods and scale the replica count up when load increased and back down when it dropped. On minikube, this meant more pods on my single node. On aks, this would mean more pods distributed across real nodes, and if I combined it with cluster autoscaler, those nodes themselves would scale up and down based on demand. Same kubernetes concept, just at a very different scale.
+
+---
+
+## What actually transfers to production
+
+The concepts were the same. The yaml was the same. Terraform barely changed for me between local and cloud. What changed was authentication, managed services replacing things I'd otherwise manage myself, and the operational concerns that come with running real workloads - multi node scheduling, node failures, persistent storage that survives pod restarts, and certificates that renew themselves.
+
+Learning locally gave me a solid foundation for all of it. The jump from minikube to aks is mostly about me understanding what azure is managing on my behalf and why that's useful, not about relearning how kubernetes works. Doing it this way - terraform, helm, proper chart structure, infrastructure as code from day one - means my production version of this is an evolution of what I already have rather than starting from scratch.
+
+Next, I'm setting up a ci/cd pipeline so my deployment stops being a manual step entirely.
