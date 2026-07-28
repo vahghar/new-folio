@@ -1,6 +1,5 @@
 "use client";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
@@ -10,8 +9,6 @@ import Link from "next/link";
 import React from "react";
 
 interface ResumeCardProps {
-  logoUrl: string;
-  altText: string;
   title: string;
   subtitle?: string;
   href?: string;
@@ -20,8 +17,6 @@ interface ResumeCardProps {
   description?: string;
 }
 export const ResumeCard = ({
-  logoUrl,
-  altText,
   title,
   subtitle,
   href,
@@ -44,18 +39,8 @@ export const ResumeCard = ({
       className="block cursor-pointer"
       onClick={handleClick}
     >
-      <Card className="flex">
-        <div className="flex-none">
-          <Avatar className="border p-2 size-12 m-auto bg-muted-background dark:bg-foreground">
-            <AvatarImage
-              src={logoUrl}
-              alt={altText}
-              className="object-contain"
-            />
-            <AvatarFallback>{altText[0]}</AvatarFallback>
-          </Avatar>
-        </div>
-        <div className="flex-grow ml-4 items-center flex-col group">
+      <Card className="flex bg-transparent border-none shadow-none">
+        <div className="flex-grow items-center flex-col group">
           <CardHeader>
             <div className="flex items-center justify-between gap-x-2 text-base">
               <h3 className="inline-flex items-center justify-center font-semibold leading-none text-xs sm:text-sm">

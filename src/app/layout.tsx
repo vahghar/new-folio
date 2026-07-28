@@ -1,4 +1,3 @@
-import Navbar from "@/components/navbar";
 import { FloatingDockDemo } from "@/components/navbar_demo";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,6 +8,12 @@ import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 import VedWrapper from "@/components/VedWrapper";
 import { Cursor } from "@/components/cursor";
+import dynamic from "next/dynamic";
+
+const GrainGradientBackground = dynamic(
+  () => import("@/components/grain-gradient-background").then((mod) => mod.GrainGradientBackground),
+  { ssr: false }
+);
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -63,6 +68,7 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="light">
+          <GrainGradientBackground />
           <Cursor />
           <VedWrapper/>
           <TooltipProvider delayDuration={0}>

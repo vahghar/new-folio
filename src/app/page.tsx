@@ -9,9 +9,7 @@ import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { DATA } from "@/data/resume";
 import { IconMail } from "@tabler/icons-react";
-import Link from "next/link";
 import Markdown from "react-markdown";
-
 const words = "Software Engineer. Turning coffee into code since 2023.";
 
 const BLUR_FADE_DELAY = 0.04;
@@ -21,9 +19,9 @@ export default function Page() {
     <main className="flex flex-col min-h-[100dvh] space-y-10">
       <section id="hero" className="relative">
         {/* Aurora background orbs */}
-        <div className="aurora-orb aurora-orb-1" />
+        {/* <div className="aurora-orb aurora-orb-1" />
         <div className="aurora-orb aurora-orb-2" />
-        <div className="aurora-orb aurora-orb-3" />
+        <div className="aurora-orb aurora-orb-3" /> */}
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="gap-2 flex justify-between">
             <div className="flex-col flex flex-1 space-y-1.5">
@@ -34,14 +32,6 @@ export default function Page() {
                 text={`Hi, I'm ${DATA.name.split(" ")[0]}`}
               />
               <TextGenerateEffect words="Software Engineer. Turning coffee into code since 2023."/>
-              <BlurFade delay={BLUR_FADE_DELAY * 2}>
-                <Link 
-                  href="/blog" 
-                  className="text-xs text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1 group mt-2 relative z-10 pointer-events-auto"
-                >
-                  Check out my blogs <span className="group-hover:translate-x-0.5 transition-transform">→</span>
-                </Link>
-              </BlurFade>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
               <Avatar className="size-28 border ring-2 ring-indigo-400/30 ring-offset-2 ring-offset-background">
@@ -74,8 +64,6 @@ export default function Page() {
             >
               <ResumeCard
                 key={work.company}
-                logoUrl={work.logoUrl}
-                altText={work.company}
                 title={work.company}
                 subtitle={work.title}
                 href={work.href}
@@ -99,8 +87,6 @@ export default function Page() {
             >
               <ResumeCard
                 key={education.school}
-                logoUrl={education.logoUrl}
-                altText={education.school}
                 title={education.school}
                 subtitle={education.degree}
                 period={`${education.start} - ${education.end}`}
