@@ -2,55 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── Custom cursor ── */
-* {
-  cursor: none !important;
-}
 
-.cursor-dot {
-  position: fixed;
-  top: -4px;
-  left: -4px;
-  width: 8px;
-  height: 8px;
-  background: currentColor;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  will-change: transform;
-  transition: width 0.15s, height 0.15s, top 0.15s, left 0.15s, opacity 0.2s;
-}
-
-.cursor-dot--hover {
-  top: -6px;
-  left: -6px;
-  width: 12px;
-  height: 12px;
-  opacity: 0.5;
-}
-
-.cursor-ring {
-  position: fixed;
-  top: -18px;
-  left: -18px;
-  width: 36px;
-  height: 36px;
-  border: 1.5px solid currentColor;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  will-change: transform;
-  opacity: 0.35;
-  transition: width 0.2s, height 0.2s, top 0.2s, left 0.2s, opacity 0.2s, border-color 0.2s;
-}
-
-.cursor-ring--hover {
-  top: -28px;
-  left: -28px;
-  width: 56px;
-  height: 56px;
-  opacity: 0.15;
-}
 
 @layer base {
     :root {
